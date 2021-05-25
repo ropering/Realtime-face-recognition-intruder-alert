@@ -21,6 +21,7 @@ cascadePath = 'xml/haarcascade_frontalface_default.xml'
 faceCascade = cv2.CascadeClassifier(cascadePath)
 font = cv2.FONT_HERSHEY_SIMPLEX
 
+#사용자 저장 변수
 id = 0
 
 # 이런식으로 사용자의 이름을 사용자 수만큼 추가해준다.
@@ -35,6 +36,7 @@ cap.set(4, 480) # set video height
 minW = 0.1*cap.get(3)
 minH = 0.1*cap.get(4)
 
+# 얼굴인식 쓰레드
 class Thread1(threading.Thread):
     def run(self):
         '''반복문으로 얼굴인식'''
@@ -69,7 +71,7 @@ class Thread1(threading.Thread):
             if k == 27: # press 'ESC' to quit
                 break
     
-
+# 침입자 판단 → 사진 촬영 → 이메일 전송 쓰레드
 class Thread2(threading.Thread):
     def run(self) -> None:
         while(1):
